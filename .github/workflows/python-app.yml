@@ -34,3 +34,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -vs .github/workflows/test.py
+   
+    - name: 'Deploy to Azure Web App'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'sserr'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_db2670166c894aea8d7fd546e4600c3b }}
